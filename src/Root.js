@@ -72,5 +72,44 @@ export default class Root extends Component {
         }
     }
 
+    addMessage(type, text, selectedId) {
+        this.setState({
+            ...this.state,
+            [type]: {
+                ...this.state[type],
+                [selectedId]: [
+                    ...this.state[type][selectedId],
+                    createMessage(text, nextId(this.state[type][selectedId]))
+                ]
+            }
+        });
+    }
+
+    render() {
+        const { channels, people, selectedChannelId, selectedPersonId } = this.state;
+        let messages = [];
+        let isSomethingSelected = false;
+        if (selectedChannelId) {
+            messages = this.state.messagesByChannelId[selectedChannelId];
+            isSomethingSelected = true;
+        }
+        if (selectedPersonId) {
+            messages = this.state.messagesByPersonId[selectedPersonId];
+            isSomethingSelected = true;
+        }
+
+        return (
+            <div className='container'>
+                <SidebarPane
+                    channels={channels}
+                    people={people}
+                    onChannelSelected={this.handleChannelSelected}
+                    onPersonSelected={this.handlePersonSelected}
+                    selectedChannelId={selectedChannelId}
+                    selectedPersonId={selectedPersonId} />
+            </div>
+        );
+    }
+
     
 }
