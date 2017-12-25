@@ -107,6 +107,12 @@ export default class Root extends Component {
                     onPersonSelected={this.handlePersonSelected}
                     selectedChannelId={selectedChannelId}
                     selectedPersonId={selectedPersonId} />
+                {/* {isSomethingSelected ?
+                    <ChatPane
+                        messages={messages}
+                        onSendMessage={this.handleSentMessage} />
+                    : <EmptyChatPane />
+                } */}
             </div>
         );
     }

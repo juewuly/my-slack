@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ChannelList from './ChannelList';
-// import PeopleList from './PeopleList';
+import PeopleList from './PeopleList';
 
 const SidebarPane = ({
     channels,
@@ -16,10 +16,10 @@ const SidebarPane = ({
             channels={channels}
             selectedId={selectedChannelId}
             onChannelSelected={onChannelSelected} />
-        {/* <PeopleList
+        <PeopleList
             people={people}
             selectedId={selectedPersonId}
-            onPersonSelected={onPersonSelected} /> */}
+            onPersonSelected={onPersonSelected} />
     </div>
 );
 
