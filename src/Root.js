@@ -41,4 +41,36 @@ export default class Root extends Component {
             selectedChannelId: null
         });
     }
+
+    handleSentMessage = text => {
+        const { selectedChannelId, selectedPersonId } = this.state;
+
+        if (selectedChannelId) {
+            this.setState({
+                ...this.state,
+                messagesByChannelId: {
+                    ...this.state.messagesByChannelId,
+                    [selectedChannelId]: [
+                        ...this.state.messagesByChannelId[selectedChannelId],
+                        createMessage(text, nextId(this.state.messagesByChannelId[selectedChannelId]))
+                    ]
+                }
+            });
+        }
+
+        if (selectedPersonId) {
+            this.setState({
+                ...this.state,
+                messagesByPersonId: {
+                    ...this.state.messagesByPersonId,
+                    [selectedPersonId]: [
+                        ...this.state.messagesByPersonId[selectedPersonId],
+                        createMessage(text, nextId(this.state.messagesByPersonId[selectedPersonId]))
+                    ]
+                }
+            });
+        }
+    }
+
+    
 }
