@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SidebarPane from './SidebarPane';
-// import ChatPane from './ChatPane';
-// import EmptyChatPane from './EmptyChatPane';
+import ChatPane from './ChatPane';
+import EmptyChatPane from './EmptyChatPane';
 import { channels, people, createFakeActivity } from './static-data';
 
 
@@ -107,12 +107,12 @@ export default class Root extends Component {
                     onPersonSelected={this.handlePersonSelected}
                     selectedChannelId={selectedChannelId}
                     selectedPersonId={selectedPersonId} />
-                {/* {isSomethingSelected ?
+                {isSomethingSelected ?
                     <ChatPane
                         messages={messages}
                         onSendMessage={this.handleSentMessage} />
                     : <EmptyChatPane />
-                } */}
+                }
             </div>
         );
     }
